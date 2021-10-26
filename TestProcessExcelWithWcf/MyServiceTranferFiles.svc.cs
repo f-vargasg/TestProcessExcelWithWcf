@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.IO;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -15,7 +16,7 @@ namespace TestProcessExcelWithWcf
     {
 
         // string path = @"c:\path";
-        string path = @"C:\Users\FVargas\Documents\Trash\FileUploaded";
+        string path = string.Empty;
 
         public Stream Download(String file)
         {
@@ -29,6 +30,7 @@ namespace TestProcessExcelWithWcf
 
         public string Upload(Stream input)
         {
+            path = ConfigurationManager.AppSettings["uploadPath"];
             string filename = String.Format(@"{0}\{1}.dat", path, Guid.NewGuid().ToString());
             using (var fname = File.Create(filename))
             {

@@ -72,6 +72,7 @@
             this.butBrowseFiles.TabIndex = 3;
             this.butBrowseFiles.Text = "Browse";
             this.butBrowseFiles.UseVisualStyleBackColor = true;
+            this.butBrowseFiles.Click += new System.EventHandler(this.butBrowseFiles_Click);
             // 
             // txtDownloadPath
             // 

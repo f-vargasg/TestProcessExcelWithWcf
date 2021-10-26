@@ -30,6 +30,7 @@ namespace WinTestService
             this.StartPosition = FormStartPosition.CenterScreen;
             txtFname.Text = ConfigurationManager.AppSettings["fname"];
             txtDownloadPath.Text = ConfigurationManager.AppSettings["downloadPath"];
+            this.Text = ConfigurationManager.AppSettings["formCaption"];
         }
 
         private void butUpload_Click(object sender, EventArgs e)
@@ -68,6 +69,26 @@ namespace WinTestService
                 MessageBox.Show(ex.Message);
             }
 
+        }
+
+        private void butBrowseFiles_Click(object sender, EventArgs e)
+        {
+            var fileContent = string.Empty;
+            var filePath = string.Empty;
+
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                openFileDialog.InitialDirectory = "c:\\";
+                openFileDialog.Filter = "docx files (*.docx)|*.docx|doc files (*.doc)|*.doc|xlsx files (*.xlsx)|*.xlsx|xls files (*.xls)|*.xls|All files (*.*)|*.*";
+                openFileDialog.FilterIndex = 2;
+                openFileDialog.RestoreDirectory = true;
+
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    //Get the path of specified file
+                    txtFname.Text = openFileDialog.FileName;
+                }
+            }
         }
     }
 }
