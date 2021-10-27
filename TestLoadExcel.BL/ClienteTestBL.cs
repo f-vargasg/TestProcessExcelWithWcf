@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TestLoadExcel.BL
 {
-    public class Class1
+    public class ClienteTestBL
     {
     }
 }
