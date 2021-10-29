@@ -12,6 +12,6 @@ namespace TestLoadExcel.BE
         public string NomCliente { get; set; }
         public string DesDireccion { get; set; }
         public int CodEstadoN { get; set; }
-        public decimal CodRegistroN { get; set; }
+        public decimal? CodRegistroN { get; set; }
     }
 }

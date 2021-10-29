@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Configuration;
 using System.IO;
-using System.Linq;
-using System.Runtime.Serialization;
-using System.ServiceModel;
-using System.ServiceModel.Web;
-using System.Text;
+using System.Security.Principal;
+using TestLoadExcel.BL;
 
 namespace TestProcessExcelWithWcf
 {
@@ -37,6 +33,17 @@ namespace TestProcessExcelWithWcf
                 input.CopyTo(fname);
             }
             return filename;
+        }
+
+        public void LoadExcelFileToDb (string pfilename)
+        {
+            ClienteTestBL clienteTestBL = new ClienteTestBL();
+            string usuario;
+
+            usuario = WindowsIdentity.GetCurrent().Name;
+
+            clienteTestBL.LoadExcel(pfilename, usuario);
+
         }
 
 
