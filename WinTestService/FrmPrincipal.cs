@@ -102,9 +102,10 @@ namespace WinTestService
             try
             {
                 MyServiceTranferFilesClient client = new MyServiceTranferFilesClient();
-                // string serverPath = Path.GetFullPath(this.lastFileUploaded.NameStored);
                 string realServerFfname = lastFileUploaded.NameStored;
                 client.StoreToDb(realServerFfname);
+                string msgExito = string.Format("Archivo {0} cargado exitosamente !!!", realServerFfname);
+                MessageBox.Show (msgExito);
             }
             catch (Exception ex)
             {
