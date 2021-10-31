@@ -35,16 +35,25 @@ namespace TestProcessExcelWithWcf
             return filename;
         }
 
-        public void LoadExcelFileToDb (string pfilename)
+        public bool StoreToDb(string filename)
         {
             ClienteTestBL clienteTestBL = new ClienteTestBL();
-            string usuario;
+            bool res = true;
 
-            usuario = WindowsIdentity.GetCurrent().Name;
-
-            clienteTestBL.LoadExcel(pfilename, usuario);
-
+            try
+            {
+                string usuario = WindowsIdentity.GetCurrent().Name;
+                clienteTestBL.LoadFromExcel(filename, usuario);
+            }
+            catch (Exception ex)
+            {
+                string msgErr = ex.Message;
+                res = false;
+            }
+            return res;
         }
+
+        
 
 
     }

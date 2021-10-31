@@ -16,6 +16,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestLoadExcel.DL", "TestLoa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestLoadExcel.BL", "TestLoadExcel.BL\TestLoadExcel.BL.csproj", "{028052F8-BD6C-432D-B4E7-5FC49E96AB1E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinTestVarios", "WinTestVarios\WinTestVarios.csproj", "{6EEC845C-B84E-4A87-B434-960D9974CC10}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -42,6 +44,10 @@ Global
 		{028052F8-BD6C-432D-B4E7-5FC49E96AB1E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{028052F8-BD6C-432D-B4E7-5FC49E96AB1E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{028052F8-BD6C-432D-B4E7-5FC49E96AB1E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6EEC845C-B84E-4A87-B434-960D9974CC10}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6EEC845C-B84E-4A87-B434-960D9974CC10}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6EEC845C-B84E-4A87-B434-960D9974CC10}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6EEC845C-B84E-4A87-B434-960D9974CC10}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

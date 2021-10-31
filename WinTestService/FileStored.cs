@@ -9,7 +9,7 @@ namespace WinTestService
 {
     public class FileStored
     {
-        public string NameStored { get; set; }
+        public string NameStored { get; set; }     // full name in the server
         public string RealExtension { get; set; }
 
         public string RealFname ()

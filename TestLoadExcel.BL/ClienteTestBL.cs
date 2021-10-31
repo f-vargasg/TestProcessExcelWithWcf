@@ -1,5 +1,6 @@
 ﻿using NPOI.HSSF.UserModel;
 using NPOI.SS.UserModel;
+using NPOI.XSSF.UserModel;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -31,35 +32,58 @@ namespace TestLoadExcel.BL
             }
         }
 
-        public void LoadExcel(string pFilename, string pCodUsuarioV)
+
+        public List<ClienteTestBE> ExcelToList(string pFilename)
         {
             try
             {
-                HSSFWorkbook hssfwb;
+                List<ClienteTestBE> lst = new List<ClienteTestBE>();
+                XSSFWorkbook hssfwb;
+
                 using (FileStream file = new FileStream(pFilename, FileMode.Open, FileAccess.Read))
                 {
-                    hssfwb = new HSSFWorkbook(file);
+                    hssfwb = new XSSFWorkbook(file);
                 }
 
                 ISheet sheet = hssfwb.GetSheet("Hoja1");
-                for (int row = 4; row <= sheet.LastRowNum; row++)
+                for (int row = 3; row <= sheet.LastRowNum; row++)
                 {
                     if (sheet.GetRow(row) != null) //null is when the row only contains empty cells 
                     {
-                        for (int col = 0; col < 3; col++)
-                        {
                             ClienteTestBE clienteTestBE = new ClienteTestBE()
                             {
-                                CodClienteN = Convert.ToInt32(sheet.GetRow(row).GetCell(0).StringCellValue),
-                                NomCliente = Convert.ToString(sheet.GetRow(row).GetCell(1).StringCellValue),
+                                CodClienteN = Convert.ToInt32(sheet.GetRow(row).GetCell(2).NumericCellValue),
+                                NomCliente = Convert.ToString(sheet.GetRow(row).GetCell(3).StringCellValue),
                                 CodRegistroN = null,
-                                DesDireccion = Convert.ToString(sheet.GetRow(row).GetCell(2).StringCellValue)
+                                DesDireccion = Convert.ToString(sheet.GetRow(row).GetCell(4).StringCellValue),
+                                CodEstadoN = 2
                             };
-                            Insertar(clienteTestBE, pCodUsuarioV, null);
-                        }
+
+                        lst.Add(clienteTestBE);
+                        Console.WriteLine(clienteTestBE.ToString());
                         // MessageBox.Show(string.Format("Row {0} = {1}", row, sheet.GetRow(row).GetCell(0).StringCellValue));
                     }
                 }
+                return lst;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public void LoadFromExcel(string pFilename, string pCodUsuarioV)
+        {
+            try
+            {
+                List<ClienteTestBE> lst = ExcelToList(pFilename);
+                foreach (var item in lst)
+                {
+                    Insertar(item, pCodUsuarioV, null);
+                }
+                    
+
             }
             catch (Exception)
             {

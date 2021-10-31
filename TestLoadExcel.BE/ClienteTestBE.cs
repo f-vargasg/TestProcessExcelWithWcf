@@ -13,5 +13,14 @@ namespace TestLoadExcel.BE
         public string DesDireccion { get; set; }
         public int CodEstadoN { get; set; }
         public decimal? CodRegistroN { get; set; }
+
+        public override string ToString()
+        {
+            return "[CodCliente: " + CodClienteN.ToString() + " - " +
+                     "NomCliente: " + NomCliente + " - " +
+                     "DesDireccion: " + DesDireccion + " - " +
+                     "CodEstadoN: " + CodEstadoN.ToString() + " - " +
+                     "CodRegistro " + (CodRegistroN == null ? "null"  : CodRegistroN.ToString());
+        }
     }
 }

@@ -19,6 +19,12 @@
   <wsdl:message name="IMyServiceTranferFiles_Upload_OutputMessage">
     <wsdl:part name="parameters" element="tns:UploadResponse" />
   </wsdl:message>
+  <wsdl:message name="IMyServiceTranferFiles_StoreToDb_InputMessage">
+    <wsdl:part name="parameters" element="tns:StoreToDb" />
+  </wsdl:message>
+  <wsdl:message name="IMyServiceTranferFiles_StoreToDb_OutputMessage">
+    <wsdl:part name="parameters" element="tns:StoreToDbResponse" />
+  </wsdl:message>
   <wsdl:portType name="IMyServiceTranferFiles">
     <wsdl:operation name="Download">
       <wsdl:input wsaw:Action="http://tempuri.org/IMyServiceTranferFiles/Download" message="tns:IMyServiceTranferFiles_Download_InputMessage" />
@@ -27,6 +33,10 @@
     <wsdl:operation name="Upload">
       <wsdl:input wsaw:Action="http://tempuri.org/IMyServiceTranferFiles/Upload" message="tns:IMyServiceTranferFiles_Upload_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IMyServiceTranferFiles/UploadResponse" message="tns:IMyServiceTranferFiles_Upload_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="StoreToDb">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMyServiceTranferFiles/StoreToDb" message="tns:IMyServiceTranferFiles_StoreToDb_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMyServiceTranferFiles/StoreToDbResponse" message="tns:IMyServiceTranferFiles_StoreToDb_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IMyServiceTranferFiles" type="tns:IMyServiceTranferFiles">
@@ -42,6 +52,15 @@
     </wsdl:operation>
     <wsdl:operation name="Upload">
       <soap:operation soapAction="http://tempuri.org/IMyServiceTranferFiles/Upload" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="StoreToDb">
+      <soap:operation soapAction="http://tempuri.org/IMyServiceTranferFiles/StoreToDb" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

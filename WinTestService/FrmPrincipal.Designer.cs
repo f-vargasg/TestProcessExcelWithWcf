@@ -39,6 +39,7 @@
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.tlsStrExit = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
+            this.butStoreDb = new System.Windows.Forms.Button();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -61,7 +62,7 @@
             // 
             // butDownload
             // 
-            this.butDownload.Location = new System.Drawing.Point(154, 187);
+            this.butDownload.Location = new System.Drawing.Point(309, 187);
             this.butDownload.Name = "butDownload";
             this.butDownload.Size = new System.Drawing.Size(118, 28);
             this.butDownload.TabIndex = 2;
@@ -123,6 +124,8 @@
             this.tlsStrExit.Name = "tlsStrExit";
             this.tlsStrExit.Size = new System.Drawing.Size(23, 22);
             this.tlsStrExit.Text = "toolStripButton1";
+            this.tlsStrExit.ToolTipText = "Salir";
+            this.tlsStrExit.Click += new System.EventHandler(this.tlsStrExit_Click);
             // 
             // toolStripButton2
             // 
@@ -132,12 +135,24 @@
             this.toolStripButton2.Name = "toolStripButton2";
             this.toolStripButton2.Size = new System.Drawing.Size(23, 22);
             this.toolStripButton2.Text = "toolStripButton2";
+            this.toolStripButton2.ToolTipText = "Test";
+            // 
+            // butStoreDb
+            // 
+            this.butStoreDb.Location = new System.Drawing.Point(159, 187);
+            this.butStoreDb.Name = "butStoreDb";
+            this.butStoreDb.Size = new System.Drawing.Size(118, 28);
+            this.butStoreDb.TabIndex = 8;
+            this.butStoreDb.Text = "Save To DB";
+            this.butStoreDb.UseVisualStyleBackColor = true;
+            this.butStoreDb.Click += new System.EventHandler(this.butStoreDb_Click);
             // 
             // FrmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(549, 249);
+            this.Controls.Add(this.butStoreDb);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -147,6 +162,7 @@
             this.Controls.Add(this.txtFname);
             this.Controls.Add(this.butUpload);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmPrincipal";
             this.Text = "Form1";
@@ -169,6 +185,7 @@
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton tlsStrExit;
         private System.Windows.Forms.ToolStripButton toolStripButton2;
+        private System.Windows.Forms.Button butStoreDb;
     }
 }
 

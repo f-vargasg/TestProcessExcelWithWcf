@@ -42,6 +42,7 @@ namespace WinTestService
                                                      FileAccess.Read);
                 this.lastFileUploaded.NameStored = client.Upload(fsSource);
                 this.lastFileUploaded.RealExtension = Path.GetExtension(txtFname.Text);
+
                 MessageBox.Show("Archivo Subido correctamente ...");
             }
             catch (Exception ex)
@@ -88,6 +89,26 @@ namespace WinTestService
                     //Get the path of specified file
                     txtFname.Text = openFileDialog.FileName;
                 }
+            }
+        }
+
+        private void tlsStrExit_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
+        }
+
+        private void butStoreDb_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                MyServiceTranferFilesClient client = new MyServiceTranferFilesClient();
+                // string serverPath = Path.GetFullPath(this.lastFileUploaded.NameStored);
+                string realServerFfname = lastFileUploaded.NameStored;
+                client.StoreToDb(realServerFfname);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
     }

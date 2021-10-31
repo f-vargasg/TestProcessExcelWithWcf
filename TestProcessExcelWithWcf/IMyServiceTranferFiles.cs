@@ -16,9 +16,12 @@ namespace TestProcessExcelWithWcf
 
         [OperationContract]
         Stream Download(String file);
-        void LoadExcelFileToDb(string pfilename);
+        
         [OperationContract]
         string Upload(Stream input);
+        [OperationContract]
+        bool StoreToDb(string filename);
+
 
     }
 
