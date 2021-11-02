@@ -10,7 +10,24 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WinTestService.TransfFilesSrvRef;
-
+/*
+ * 
+ * Esta version y documentación leída, estandarice lo sigiuente
+ * 
+ * fname .- solo el nombre de un archivo (ie. datos.xlsx, docum.docx, datos.dat, etc.
+ * 
+ * path.- Solo un Path (ie 
+ * C:\Users\garfi\Documents\Trash
+ * C:\Users\garfi\Pictures\AppImages
+ * etc.)
+ * 
+ * 
+ * pathFname .- el nombre mas un path (ie. 
+ * C:\Users\garfi\Documents\Trash\ArchSubir\ArchivoCargarDatosCltes.xlsx
+ * C:\Users\garfi\Documents\Trash\ArchSubir\CorreccionConexionRed.docx
+ * etc.)
+ * 
+ * */
 namespace WinTestService
 {
     public partial class FrmPrincipal : Form
