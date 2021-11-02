@@ -19,6 +19,7 @@ namespace TestProcessExcelWithWcf
         
         [OperationContract]
         string Upload(Stream input);
+
         [OperationContract]
         bool StoreToDb(string filename);
 
