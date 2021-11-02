@@ -25,34 +25,47 @@ namespace WinTestService
             InitMyComponents();
         }
 
+        #region Operaciones Generales
         private void InitMyComponents()
         {
             this.StartPosition = FormStartPosition.CenterScreen;
-            txtFname.Text = ConfigurationManager.AppSettings["fname"];
-            txtDownloadPath.Text = ConfigurationManager.AppSettings["downloadPath"];
             this.Text = ConfigurationManager.AppSettings["formCaption"];
+
+            this.ucPrimVersTransfFile.TxtPathFname.Text = ConfigurationManager.AppSettings["fname"];
+            this.ucPrimVersTransfFile.TxtDownloadPath.Text = ConfigurationManager.AppSettings["downloadPath"];
+            this.ucPrimVersTransfFile.ButBrowseFiles.Click += ButBrowseFiles_Click;
+            this.ucPrimVersTransfFile.ButUpload.Click += ButUpload_Click;
+            this.ucPrimVersTransfFile.ButStoreDb.Click += ButStoreDb_Click;
+            this.ucPrimVersTransfFile.ButDownload.Click += ButDownload_Click;
         }
 
-        private void butUpload_Click(object sender, EventArgs e)
+        private string GetFilePath(string pOldFilePath)
         {
-            try
-            {
-                MyServiceTranferFilesClient client = new MyServiceTranferFilesClient();
-                FileStream fsSource = new FileStream(txtFname.Text, FileMode.Open,
-                                                     FileAccess.Read);
-                this.lastFileUploaded.NameStored = client.Upload(fsSource);
-                this.lastFileUploaded.RealExtension = Path.GetExtension(txtFname.Text);
+            string res = string.Empty;
+            var fileContent = string.Empty;
+            var filePath = string.Empty;
 
-                MessageBox.Show("Archivo Subido correctamente ...");
-            }
-            catch (Exception ex)
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
             {
-                MessageBox.Show(ex.Message);
+                openFileDialog.InitialDirectory = "c:\\";
+                openFileDialog.Filter = "docx files (*.docx)|*.docx|doc files (*.doc)|*.doc|xlsx files (*.xlsx)|*.xlsx|xls files (*.xls)|*.xls|All files (*.*)|*.*";
+                openFileDialog.FilterIndex = 2;
+                openFileDialog.RestoreDirectory = true;
+
+                res = pOldFilePath;
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    res = openFileDialog.FileName;
+                }
             }
-           
+            return res;
         }
 
-        private void butDownload_Click(object sender, EventArgs e)
+        #endregion
+
+        #region Eventos Componentes Primera Version
+        
+        private void ButDownload_Click(object sender, EventArgs e)
         {
             try
             {
@@ -69,35 +82,9 @@ namespace WinTestService
             {
                 MessageBox.Show(ex.Message);
             }
-
         }
 
-        private void butBrowseFiles_Click(object sender, EventArgs e)
-        {
-            var fileContent = string.Empty;
-            var filePath = string.Empty;
-
-            using (OpenFileDialog openFileDialog = new OpenFileDialog())
-            {
-                openFileDialog.InitialDirectory = "c:\\";
-                openFileDialog.Filter = "docx files (*.docx)|*.docx|doc files (*.doc)|*.doc|xlsx files (*.xlsx)|*.xlsx|xls files (*.xls)|*.xls|All files (*.*)|*.*";
-                openFileDialog.FilterIndex = 2;
-                openFileDialog.RestoreDirectory = true;
-
-                if (openFileDialog.ShowDialog() == DialogResult.OK)
-                {
-                    //Get the path of specified file
-                    txtFname.Text = openFileDialog.FileName;
-                }
-            }
-        }
-
-        private void tlsStrExit_Click(object sender, EventArgs e)
-        {
-            this.Dispose();
-        }
-
-        private void butStoreDb_Click(object sender, EventArgs e)
+        private void ButStoreDb_Click(object sender, EventArgs e)
         {
             try
             {
@@ -105,12 +92,52 @@ namespace WinTestService
                 string realServerFfname = lastFileUploaded.NameStored;
                 client.StoreToDb(realServerFfname);
                 string msgExito = string.Format("Archivo {0} cargado exitosamente !!!", realServerFfname);
-                MessageBox.Show (msgExito);
+                MessageBox.Show(msgExito);
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void ButUpload_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                MyServiceTranferFilesClient client = new MyServiceTranferFilesClient();
+                string pathFname = ucPrimVersTransfFile.TxtPathFname.Text;
+                FileStream fsSource = new FileStream(pathFname, FileMode.Open,
+                                                     FileAccess.Read);
+                this.lastFileUploaded.NameStored = client.Upload(fsSource);
+                this.lastFileUploaded.RealExtension = Path.GetExtension(pathFname);
+
+                MessageBox.Show("Archivo Subido correctamente ...");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void ButBrowseFiles_Click(object sender, EventArgs e)
+        {
+            string currentFilePath = ucPrimVersTransfFile.TxtPathFname.Text;
+            ucPrimVersTransfFile.TxtPathFname.Text = GetFilePath(currentFilePath);
+        }
+
+        #endregion
+
+        #region Eventos Componente Segunda Version
+
+        #endregion
+
+        #region Eventos Generales
+        private void tlsStrExit_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
+        }
+        #endregion
+
+
     }
 }

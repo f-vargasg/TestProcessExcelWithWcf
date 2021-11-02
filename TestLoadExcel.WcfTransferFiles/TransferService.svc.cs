@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.IO;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -18,13 +19,12 @@ namespace TestLoadExcel.WcfTransferFiles
             RemoteFileInfo result = new RemoteFileInfo();
             try
             {
-                string filePath = Path.Combine(@"c:\Uploadfiles", request.FileName);
+                string filePath = Path.Combine(ConfigurationManager.AppSettings["uploadPath"], request.FileName);
                 FileInfo fileInfo = new FileInfo(filePath);
 
                 // check if exists
                 if (!fileInfo.Exists)
-                    throw new FileNotFoundException("File not found",
-                                                            request.FileName);
+                    throw new FileNotFoundException("File not found", request.FileName);
 
                 // open stream
                 FileStream stream = new FileStream(filePath, FileMode.Open, FileAccess.Read);
@@ -43,28 +43,15 @@ namespace TestLoadExcel.WcfTransferFiles
 
         public void UploadFile(RemoteFileInfo request)
         {
-            FileStream targetStream = null;
             Stream sourceStream = request.FileByteStream;
 
-            string uploadFolder = @"C:\upload\";
+            string uploadFolder = ConfigurationManager.AppSettings["uploadPath"]; ;
 
             string filePath = Path.Combine(uploadFolder, request.FileName);
 
-            using (targetStream = new FileStream(filePath, FileMode.Create, FileAccess.Write, 
-                                                 FileShare.None))
+            using (var fname = File.Create(filePath))
             {
-                //read from the input stream in 65000 byte chunks
-
-                const int bufferLen = 65000;
-                byte[] buffer = new byte[bufferLen];
-                int count = 0;
-                while ((count = sourceStream.Read(buffer, 0, bufferLen)) > 0)
-                {
-                    // save to output stream
-                    targetStream.Write(buffer, 0, count);
-                }
-                targetStream.Close();
-                sourceStream.Close();
+                sourceStream.CopyTo(fname);
             }
         }
     }
