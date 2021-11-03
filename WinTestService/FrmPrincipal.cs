@@ -156,13 +156,15 @@ namespace WinTestService
         {
             try
             {
-                TransferFileServiceClient clientDownload = new TransferFileServiceClient();
+                TransferFileServiceClient clientSrv = new TransferFileServiceClient();
                 DownloadRequest requestData = new DownloadRequest();
                 RemoteFileInfo fileInfo = new RemoteFileInfo();
                 requestData.Filename = Path.GetFileName(ucSegVersTransfFile.TxtPathFname.Text);
-                fileInfo = clientDownload.DownloadFile(requestData);
-                var stream = fileInfo.FileByteStream;
-                var realFname = Path.Combine(ConfigurationManager.AppSettings["downloadPath"], fileInfo.Filename);
+                Stream stream;
+                fileInfo.Length = clientSrv.DownloadFile(ref requestData.Filename, out stream);
+                fileInfo.Filename = requestData.Filename;
+                string downloadPath = ConfigurationManager.AppSettings["downloadPath"];
+                var realFname = Path.Combine(downloadPath, fileInfo.Filename);
                 using (FileStream outputFs = new FileStream(realFname, FileMode.Create))
                 {
                     stream.CopyTo(outputFs);
@@ -194,7 +196,7 @@ namespace WinTestService
                     remoteFileInfo.Filename = Path.GetFileName(pathFname);
                     remoteFileInfo.FileByteStream = stream;
                     remoteFileInfo.Length = fileInfo.Length;
-                    client.UploadFile(remoteFileInfo);
+                    client.UploadFile(remoteFileInfo.Filename, remoteFileInfo.Length, remoteFileInfo.FileByteStream);
                 }
 
                 MessageBox.Show("Archivo Subido correctamente ...");

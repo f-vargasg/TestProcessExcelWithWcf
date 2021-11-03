@@ -30,46 +30,23 @@ namespace WcfTransferFiles
     [MessageContract]
     public class DownloadRequest
     {
-        private string filename;
-
         [MessageBodyMember]
-        public string Filename
-        {
-            get { return filename; }
-            set { filename = value; }
-        }
+        public string Filename;
     }
 
     [MessageContract]
     public class RemoteFileInfo : IDisposable
     {
-        private string filename;
 
         [MessageHeader(MustUnderstand = true)]
-        public string Filename
-        {
-            get { return filename; }
-            set { filename = value; }
-        }
+        public string Filename;
 
-        private long length;
 
         [MessageHeader(MustUnderstand = true)]
-        public long Length
-        {
-            get { return length; }
-            set { length = value; }
-        }
-
-        
-        private Stream fileByteStream;
+        public long Length;
 
         [MessageBodyMember(Order = 1)]
-        public Stream FileByteStream
-        {
-            get { return fileByteStream; }
-            set { fileByteStream = value; }
-        }
+        public System.IO.Stream  FileByteStream;
 
         public void Dispose()
         {
