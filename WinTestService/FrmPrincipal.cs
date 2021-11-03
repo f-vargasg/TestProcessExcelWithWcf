@@ -1,33 +1,28 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Configuration;
-using System.Data;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using WinTestService.TransfFilesSrvRef;
+using WinTestService.TransfFilesSrvRef2;
+
 /*
- * 
- * Esta version y documentación leída, estandarice lo sigiuente
- * 
- * fname .- solo el nombre de un archivo (ie. datos.xlsx, docum.docx, datos.dat, etc.
- * 
- * path.- Solo un Path (ie 
- * C:\Users\garfi\Documents\Trash
- * C:\Users\garfi\Pictures\AppImages
- * etc.)
- * 
- * 
- * pathFname .- el nombre mas un path (ie. 
- * C:\Users\garfi\Documents\Trash\ArchSubir\ArchivoCargarDatosCltes.xlsx
- * C:\Users\garfi\Documents\Trash\ArchSubir\CorreccionConexionRed.docx
- * etc.)
- * 
- * */
+* 
+* Esta version y documentación leída, estandarice lo sigiuente
+* 
+* fname .- solo el nombre de un archivo (ie. datos.xlsx, docum.docx, datos.dat, etc.
+* 
+* path.- Solo un Path (ie 
+* C:\Users\garfi\Documents\Trash
+* C:\Users\garfi\Pictures\AppImages
+* etc.)
+* 
+* 
+* pathFname .- el nombre mas un path (ie. 
+* C:\Users\garfi\Documents\Trash\ArchSubir\ArchivoCargarDatosCltes.xlsx
+* C:\Users\garfi\Documents\Trash\ArchSubir\CorreccionConexionRed.docx
+* etc.)
+* 
+* */
 namespace WinTestService
 {
     public partial class FrmPrincipal : Form
@@ -48,14 +43,25 @@ namespace WinTestService
             this.StartPosition = FormStartPosition.CenterScreen;
             this.Text = ConfigurationManager.AppSettings["formCaption"];
 
+            // primera version
             this.ucPrimVersTransfFile.TxtPathFname.Text = ConfigurationManager.AppSettings["fname"];
             this.ucPrimVersTransfFile.TxtDownloadPath.Text = ConfigurationManager.AppSettings["downloadPath"];
             this.ucPrimVersTransfFile.ButBrowseFiles.Click += ButBrowseFiles_Click;
             this.ucPrimVersTransfFile.ButUpload.Click += ButUpload_Click;
             this.ucPrimVersTransfFile.ButStoreDb.Click += ButStoreDb_Click;
             this.ucPrimVersTransfFile.ButDownload.Click += ButDownload_Click;
+
+            // segunda versión
+            this.ucSegVersTransfFile.TxtPathFname.Text = ConfigurationManager.AppSettings["fname"];
+            this.ucSegVersTransfFile.TxtDownloadPath.Text  = ConfigurationManager.AppSettings["downloadPath"];
+            this.ucSegVersTransfFile.ButBrowseFiles.Click += ButBrowseFiles_Click1;
+            this.ucSegVersTransfFile.ButUpload.Click += ButUpload_Click1;
+            this.ucSegVersTransfFile.ButStoreDb.Click += ButStoreDb_Click1;
+            this.ucSegVersTransfFile.ButDownload.Click += ButDownload_Click1;
+
         }
 
+     
         private string GetFilePath(string pOldFilePath)
         {
             string res = string.Empty;
@@ -129,6 +135,7 @@ namespace WinTestService
                 this.lastFileUploaded.RealExtension = Path.GetExtension(pathFname);
 
                 MessageBox.Show("Archivo Subido correctamente ...");
+
             }
             catch (Exception ex)
             {
@@ -145,6 +152,66 @@ namespace WinTestService
         #endregion
 
         #region Eventos Componente Segunda Version
+        private void ButDownload_Click1(object sender, EventArgs e)
+        {
+            try
+            {
+                TransferFileServiceClient clientDownload = new TransferFileServiceClient();
+                DownloadRequest requestData = new DownloadRequest();
+                RemoteFileInfo fileInfo = new RemoteFileInfo();
+                requestData.Filename = Path.GetFileName(ucSegVersTransfFile.TxtPathFname.Text);
+                fileInfo = clientDownload.DownloadFile(requestData);
+                var stream = fileInfo.FileByteStream;
+                var realFname = Path.Combine(ConfigurationManager.AppSettings["downloadPath"], fileInfo.Filename);
+                using (FileStream outputFs = new FileStream(realFname, FileMode.Create))
+                {
+                    stream.CopyTo(outputFs);
+                }
+                MessageBox.Show("Archivo Bajado correctamente ...");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void ButStoreDb_Click1(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void ButUpload_Click1(object sender, EventArgs e)
+        {
+            try
+            {
+                TransferFileServiceClient client = new TransferFileServiceClient();
+                string pathFname = ucSegVersTransfFile.TxtPathFname.Text;
+                FileInfo fileInfo = new FileInfo(pathFname);
+                // FileStream fsSource = new FileStream(pathFname, FileMode.Open, FileAccess.Read);
+                RemoteFileInfo remoteFileInfo = new RemoteFileInfo();
+                using (FileStream stream = new FileStream(pathFname, FileMode.Open, FileAccess.Read))
+                {
+                    remoteFileInfo.Filename = Path.GetFileName(pathFname);
+                    remoteFileInfo.FileByteStream = stream;
+                    remoteFileInfo.Length = fileInfo.Length;
+                    client.UploadFile(remoteFileInfo);
+                }
+
+                MessageBox.Show("Archivo Subido correctamente ...");
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            
+        }
+
+        private void ButBrowseFiles_Click1(object sender, EventArgs e)
+        {
+            string currentFilePath = ucSegVersTransfFile.TxtPathFname.Text;
+            ucSegVersTransfFile.TxtPathFname.Text = GetFilePath(currentFilePath);
+        }
 
         #endregion
 

@@ -6,12 +6,12 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{344AEB64-D888-4F38-A0F9-9651901431EC}</ProjectGuid>
+    <ProjectGuid>{9B1789FB-533D-4D87-A741-57458BAC3A88}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TestLoadExcel.WcfTransferFiles</RootNamespace>
-    <AssemblyName>TestLoadExcel.WcfTransferFiles</AssemblyName>
+    <RootNamespace>WcfTransferFiles</RootNamespace>
+    <AssemblyName>WcfTransferFiles</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <WcfConfigValidationEnabled>True</WcfConfigValidationEnabled>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -61,14 +61,14 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="TransferService.svc" />
+    <Content Include="TransferFileService.svc" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="TransferService.svc.cs">
-      <DependentUpon>TransferService.svc</DependentUpon>
+    <Compile Include="TransferFileService.svc.cs">
+      <DependentUpon>TransferFileService.svc</DependentUpon>
     </Compile>
-    <Compile Include="ITransferService.cs" />
+    <Compile Include="ITransferFileService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -95,9 +95,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>50153</DevelopmentServerPort>
+          <DevelopmentServerPort>57297</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:50153/</IISUrl>
+          <IISUrl>http://localhost:57297/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

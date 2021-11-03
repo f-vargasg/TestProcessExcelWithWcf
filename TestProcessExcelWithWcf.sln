@@ -8,6 +8,7 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinTestService", "WinTestService\WinTestService.csproj", "{C6E812F4-8DD0-4519-8DD2-0164A00568DD}"
 	ProjectSection(ProjectDependencies) = postProject
 		{C5056157-73CD-4A37-9C77-2634B87041A5} = {C5056157-73CD-4A37-9C77-2634B87041A5}
+		{9B1789FB-533D-4D87-A741-57458BAC3A88} = {9B1789FB-533D-4D87-A741-57458BAC3A88}
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestLoadExcel.BE", "TestLoadExcel.BE\TestLoadExcel.BE.csproj", "{38E76A41-6210-4DAE-A4DF-E0933672A9A5}"
@@ -18,7 +19,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestLoadExcel.BL", "TestLoa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinTestVarios", "WinTestVarios\WinTestVarios.csproj", "{6EEC845C-B84E-4A87-B434-960D9974CC10}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestLoadExcel.WcfTransferFiles", "TestLoadExcel.WcfTransferFiles\TestLoadExcel.WcfTransferFiles.csproj", "{344AEB64-D888-4F38-A0F9-9651901431EC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestLoadExcel.Console", "TestLoadExcel.Console\TestLoadExcel.Console.csproj", "{963EF7D3-7CB5-41DD-BAC6-7CE023060EBC}"
+	ProjectSection(ProjectDependencies) = postProject
+		{9B1789FB-533D-4D87-A741-57458BAC3A88} = {9B1789FB-533D-4D87-A741-57458BAC3A88}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WcfTransferFiles", "WcfTransferFiles\WcfTransferFiles.csproj", "{9B1789FB-533D-4D87-A741-57458BAC3A88}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -50,10 +56,14 @@ Global
 		{6EEC845C-B84E-4A87-B434-960D9974CC10}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6EEC845C-B84E-4A87-B434-960D9974CC10}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6EEC845C-B84E-4A87-B434-960D9974CC10}.Release|Any CPU.Build.0 = Release|Any CPU
-		{344AEB64-D888-4F38-A0F9-9651901431EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{344AEB64-D888-4F38-A0F9-9651901431EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{344AEB64-D888-4F38-A0F9-9651901431EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{344AEB64-D888-4F38-A0F9-9651901431EC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{963EF7D3-7CB5-41DD-BAC6-7CE023060EBC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{963EF7D3-7CB5-41DD-BAC6-7CE023060EBC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{963EF7D3-7CB5-41DD-BAC6-7CE023060EBC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{963EF7D3-7CB5-41DD-BAC6-7CE023060EBC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9B1789FB-533D-4D87-A741-57458BAC3A88}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B1789FB-533D-4D87-A741-57458BAC3A88}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B1789FB-533D-4D87-A741-57458BAC3A88}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B1789FB-533D-4D87-A741-57458BAC3A88}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
