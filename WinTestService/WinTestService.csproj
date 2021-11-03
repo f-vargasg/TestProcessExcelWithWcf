@@ -104,9 +104,6 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <None Include="Service References\TransfFilesSrvRef2\TransferFileService.wsdl" />
-    <None Include="Service References\TransfFilesSrvRef2\TransferFileService.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Service References\TransfFilesSrvRef2\TransferFileService1.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -116,10 +113,10 @@
     <None Include="Service References\TransfFilesSrvRef2\TransferFileService3.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\TransfFilesSrvRef2\TransferFileService4.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Service References\TransfFilesSrvRef2\WinTestService.TransfFilesSrvRef2.RemoteFileInfo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TransfFilesSrvRef2\WinTestService.TransfFilesSrvRef2.UploadFileResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\TransfFilesSrvRef\MyServiceTranferFiles.wsdl" />

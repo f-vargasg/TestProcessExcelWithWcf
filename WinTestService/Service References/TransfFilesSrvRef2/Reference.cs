@@ -9,147 +9,77 @@
 //------------------------------------------------------------------------------
 
 namespace WinTestService.TransfFilesSrvRef2 {
-    using System.Runtime.Serialization;
-    using System;
     
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="DownloadRequest", Namespace="http://schemas.datacontract.org/2004/07/WcfTransferFiles")]
-    [System.SerializableAttribute()]
-    public partial class DownloadRequest : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string FilenameField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Filename {
-            get {
-                return this.FilenameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.FilenameField, value) != true)) {
-                    this.FilenameField = value;
-                    this.RaisePropertyChanged("Filename");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="RemoteFileInfo", Namespace="http://schemas.datacontract.org/2004/07/WcfTransferFiles")]
-    [System.SerializableAttribute()]
-    public partial class RemoteFileInfo : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.IO.Stream FileByteStreamField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string FilenameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private long LengthField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.IO.Stream FileByteStream {
-            get {
-                return this.FileByteStreamField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.FileByteStreamField, value) != true)) {
-                    this.FileByteStreamField = value;
-                    this.RaisePropertyChanged("FileByteStream");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Filename {
-            get {
-                return this.FilenameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.FilenameField, value) != true)) {
-                    this.FilenameField = value;
-                    this.RaisePropertyChanged("Filename");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public long Length {
-            get {
-                return this.LengthField;
-            }
-            set {
-                if ((this.LengthField.Equals(value) != true)) {
-                    this.LengthField = value;
-                    this.RaisePropertyChanged("Length");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="TransfFilesSrvRef2.ITransferFileService")]
     public interface ITransferFileService {
         
+        // CODEGEN: Se está generando un contrato de mensaje, ya que el nombre de contenedor (DownloadRequest) del mensaje DownloadRequest no coincide con el valor predeterminado (DownloadFile)
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITransferFileService/DownloadFile", ReplyAction="http://tempuri.org/ITransferFileService/DownloadFileResponse")]
         WinTestService.TransfFilesSrvRef2.RemoteFileInfo DownloadFile(WinTestService.TransfFilesSrvRef2.DownloadRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITransferFileService/DownloadFile", ReplyAction="http://tempuri.org/ITransferFileService/DownloadFileResponse")]
         System.Threading.Tasks.Task<WinTestService.TransfFilesSrvRef2.RemoteFileInfo> DownloadFileAsync(WinTestService.TransfFilesSrvRef2.DownloadRequest request);
         
+        // CODEGEN: Se está generando un contrato de mensaje, ya que la operación UploadFile no es RPC ni está encapsulada en un documento.
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITransferFileService/UploadFile", ReplyAction="http://tempuri.org/ITransferFileService/UploadFileResponse")]
-        void UploadFile(WinTestService.TransfFilesSrvRef2.RemoteFileInfo request);
+        WinTestService.TransfFilesSrvRef2.UploadFileResponse UploadFile(WinTestService.TransfFilesSrvRef2.RemoteFileInfo request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITransferFileService/UploadFile", ReplyAction="http://tempuri.org/ITransferFileService/UploadFileResponse")]
-        System.Threading.Tasks.Task UploadFileAsync(WinTestService.TransfFilesSrvRef2.RemoteFileInfo request);
+        System.Threading.Tasks.Task<WinTestService.TransfFilesSrvRef2.UploadFileResponse> UploadFileAsync(WinTestService.TransfFilesSrvRef2.RemoteFileInfo request);
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="DownloadRequest", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class DownloadRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        public string Filename;
+        
+        public DownloadRequest() {
+        }
+        
+        public DownloadRequest(string Filename) {
+            this.Filename = Filename;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="RemoteFileInfo", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class RemoteFileInfo {
+        
+        [System.ServiceModel.MessageHeaderAttribute(Namespace="http://tempuri.org/")]
+        public string Filename;
+        
+        [System.ServiceModel.MessageHeaderAttribute(Namespace="http://tempuri.org/")]
+        public long Length;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        public System.IO.Stream FileByteStream;
+        
+        public RemoteFileInfo() {
+        }
+        
+        public RemoteFileInfo(string Filename, long Length, System.IO.Stream FileByteStream) {
+            this.Filename = Filename;
+            this.Length = Length;
+            this.FileByteStream = FileByteStream;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class UploadFileResponse {
+        
+        public UploadFileResponse() {
+        }
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -179,20 +109,55 @@ namespace WinTestService.TransfFilesSrvRef2 {
                 base(binding, remoteAddress) {
         }
         
-        public WinTestService.TransfFilesSrvRef2.RemoteFileInfo DownloadFile(WinTestService.TransfFilesSrvRef2.DownloadRequest request) {
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        WinTestService.TransfFilesSrvRef2.RemoteFileInfo WinTestService.TransfFilesSrvRef2.ITransferFileService.DownloadFile(WinTestService.TransfFilesSrvRef2.DownloadRequest request) {
             return base.Channel.DownloadFile(request);
         }
         
-        public System.Threading.Tasks.Task<WinTestService.TransfFilesSrvRef2.RemoteFileInfo> DownloadFileAsync(WinTestService.TransfFilesSrvRef2.DownloadRequest request) {
+        public long DownloadFile(ref string Filename, out System.IO.Stream FileByteStream) {
+            WinTestService.TransfFilesSrvRef2.DownloadRequest inValue = new WinTestService.TransfFilesSrvRef2.DownloadRequest();
+            inValue.Filename = Filename;
+            WinTestService.TransfFilesSrvRef2.RemoteFileInfo retVal = ((WinTestService.TransfFilesSrvRef2.ITransferFileService)(this)).DownloadFile(inValue);
+            Filename = retVal.Filename;
+            FileByteStream = retVal.FileByteStream;
+            return retVal.Length;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<WinTestService.TransfFilesSrvRef2.RemoteFileInfo> WinTestService.TransfFilesSrvRef2.ITransferFileService.DownloadFileAsync(WinTestService.TransfFilesSrvRef2.DownloadRequest request) {
             return base.Channel.DownloadFileAsync(request);
         }
         
-        public void UploadFile(WinTestService.TransfFilesSrvRef2.RemoteFileInfo request) {
-            base.Channel.UploadFile(request);
+        public System.Threading.Tasks.Task<WinTestService.TransfFilesSrvRef2.RemoteFileInfo> DownloadFileAsync(string Filename) {
+            WinTestService.TransfFilesSrvRef2.DownloadRequest inValue = new WinTestService.TransfFilesSrvRef2.DownloadRequest();
+            inValue.Filename = Filename;
+            return ((WinTestService.TransfFilesSrvRef2.ITransferFileService)(this)).DownloadFileAsync(inValue);
         }
         
-        public System.Threading.Tasks.Task UploadFileAsync(WinTestService.TransfFilesSrvRef2.RemoteFileInfo request) {
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        WinTestService.TransfFilesSrvRef2.UploadFileResponse WinTestService.TransfFilesSrvRef2.ITransferFileService.UploadFile(WinTestService.TransfFilesSrvRef2.RemoteFileInfo request) {
+            return base.Channel.UploadFile(request);
+        }
+        
+        public void UploadFile(string Filename, long Length, System.IO.Stream FileByteStream) {
+            WinTestService.TransfFilesSrvRef2.RemoteFileInfo inValue = new WinTestService.TransfFilesSrvRef2.RemoteFileInfo();
+            inValue.Filename = Filename;
+            inValue.Length = Length;
+            inValue.FileByteStream = FileByteStream;
+            WinTestService.TransfFilesSrvRef2.UploadFileResponse retVal = ((WinTestService.TransfFilesSrvRef2.ITransferFileService)(this)).UploadFile(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<WinTestService.TransfFilesSrvRef2.UploadFileResponse> WinTestService.TransfFilesSrvRef2.ITransferFileService.UploadFileAsync(WinTestService.TransfFilesSrvRef2.RemoteFileInfo request) {
             return base.Channel.UploadFileAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<WinTestService.TransfFilesSrvRef2.UploadFileResponse> UploadFileAsync(string Filename, long Length, System.IO.Stream FileByteStream) {
+            WinTestService.TransfFilesSrvRef2.RemoteFileInfo inValue = new WinTestService.TransfFilesSrvRef2.RemoteFileInfo();
+            inValue.Filename = Filename;
+            inValue.Length = Length;
+            inValue.FileByteStream = FileByteStream;
+            return ((WinTestService.TransfFilesSrvRef2.ITransferFileService)(this)).UploadFileAsync(inValue);
         }
     }
 }

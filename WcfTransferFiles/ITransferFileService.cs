@@ -27,12 +27,12 @@ namespace WcfTransferFiles
     // Utilice un contrato de datos, como se ilustra en el ejemplo siguiente, para agregar tipos compuestos a las operaciones de servicio.
 
 
-    [DataContract]
+    [MessageContract]
     public class DownloadRequest
     {
         private string filename;
 
-        [DataMember]
+        [MessageBodyMember]
         public string Filename
         {
             get { return filename; }
@@ -40,12 +40,12 @@ namespace WcfTransferFiles
         }
     }
 
-    [DataContract]
+    [MessageContract]
     public class RemoteFileInfo : IDisposable
     {
         private string filename;
 
-        [DataMember]
+        [MessageHeader(MustUnderstand = true)]
         public string Filename
         {
             get { return filename; }
@@ -54,16 +54,17 @@ namespace WcfTransferFiles
 
         private long length;
 
-        [DataMember]
+        [MessageHeader(MustUnderstand = true)]
         public long Length
         {
             get { return length; }
             set { length = value; }
         }
 
+        
         private Stream fileByteStream;
 
-        [DataMember]
+        [MessageBodyMember(Order = 1)]
         public Stream FileByteStream
         {
             get { return fileByteStream; }
