@@ -17,4 +17,18 @@
   </xs:element>
   <xs:element name="Filename" nillable="true" type="xs:string" />
   <xs:element name="Length" type="xs:long" />
+  <xs:element name="StoreToDb">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="filename" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="StoreToDbResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="StoreToDbResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

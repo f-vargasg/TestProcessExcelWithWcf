@@ -18,6 +18,12 @@
     <wsdl:part name="Length" element="tns:Length" />
   </wsdl:message>
   <wsdl:message name="ITransferFileService_UploadFile_OutputMessage" />
+  <wsdl:message name="ITransferFileService_StoreToDb_InputMessage">
+    <wsdl:part name="parameters" element="tns:StoreToDb" />
+  </wsdl:message>
+  <wsdl:message name="ITransferFileService_StoreToDb_OutputMessage">
+    <wsdl:part name="parameters" element="tns:StoreToDbResponse" />
+  </wsdl:message>
   <wsdl:portType name="ITransferFileService">
     <wsdl:operation name="DownloadFile">
       <wsdl:input wsaw:Action="http://tempuri.org/ITransferFileService/DownloadFile" name="DownloadRequest" message="tns:DownloadRequest" />
@@ -26,6 +32,10 @@
     <wsdl:operation name="UploadFile">
       <wsdl:input wsaw:Action="http://tempuri.org/ITransferFileService/UploadFile" name="RemoteFileInfo" message="tns:RemoteFileInfo" />
       <wsdl:output wsaw:Action="http://tempuri.org/ITransferFileService/UploadFileResponse" message="tns:ITransferFileService_UploadFile_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="StoreToDb">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITransferFileService/StoreToDb" message="tns:ITransferFileService_StoreToDb_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITransferFileService/StoreToDbResponse" message="tns:ITransferFileService_StoreToDb_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_ITransferFileService" type="tns:ITransferFileService">
@@ -46,6 +56,15 @@
       <wsdl:input name="RemoteFileInfo">
         <soap:header message="tns:RemoteFileInfo_Headers" part="Filename" use="literal" />
         <soap:header message="tns:RemoteFileInfo_Headers" part="Length" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="StoreToDb">
+      <soap:operation soapAction="http://tempuri.org/ITransferFileService/StoreToDb" style="document" />
+      <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
       <wsdl:output>

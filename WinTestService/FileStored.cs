@@ -9,13 +9,13 @@ namespace WinTestService
 {
     public class FileStored
     {
-        public string NameStored { get; set; }     // full name in the server
+        public string PathFnameInServer { get; set; }     // full name in the server
         public string RealExtension { get; set; }
 
         public string RealFname ()
         {
             string res = string.Empty;
-            res = Path.GetFileNameWithoutExtension(this.NameStored);
+            res = Path.GetFileNameWithoutExtension(this.PathFnameInServer);
             res += "." + this.RealExtension;
             return res;
         }

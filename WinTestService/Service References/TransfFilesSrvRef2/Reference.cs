@@ -28,6 +28,12 @@ namespace WinTestService.TransfFilesSrvRef2 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITransferFileService/UploadFile", ReplyAction="http://tempuri.org/ITransferFileService/UploadFileResponse")]
         System.Threading.Tasks.Task<WinTestService.TransfFilesSrvRef2.UploadFileResponse> UploadFileAsync(WinTestService.TransfFilesSrvRef2.RemoteFileInfo request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITransferFileService/StoreToDb", ReplyAction="http://tempuri.org/ITransferFileService/StoreToDbResponse")]
+        bool StoreToDb(string filename);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITransferFileService/StoreToDb", ReplyAction="http://tempuri.org/ITransferFileService/StoreToDbResponse")]
+        System.Threading.Tasks.Task<bool> StoreToDbAsync(string filename);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -158,6 +164,14 @@ namespace WinTestService.TransfFilesSrvRef2 {
             inValue.Length = Length;
             inValue.FileByteStream = FileByteStream;
             return ((WinTestService.TransfFilesSrvRef2.ITransferFileService)(this)).UploadFileAsync(inValue);
+        }
+        
+        public bool StoreToDb(string filename) {
+            return base.Channel.StoreToDb(filename);
+        }
+        
+        public System.Threading.Tasks.Task<bool> StoreToDbAsync(string filename) {
+            return base.Channel.StoreToDbAsync(filename);
         }
     }
 }

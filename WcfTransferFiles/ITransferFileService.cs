@@ -20,7 +20,9 @@ namespace WcfTransferFiles
         [OperationContract]
         void UploadFile(RemoteFileInfo request);
 
-        // TODO: agregue aquí sus operaciones de servicio
+        [OperationContract]
+        bool StoreToDb(string filename);
+
     }
 
 

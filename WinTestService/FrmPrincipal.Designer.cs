@@ -100,7 +100,7 @@
             // ucPrimVersTransfFile
             // 
             this.ucPrimVersTransfFile.Location = new System.Drawing.Point(0, 0);
-            this.ucPrimVersTransfFile.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ucPrimVersTransfFile.Margin = new System.Windows.Forms.Padding(4);
             this.ucPrimVersTransfFile.Name = "ucPrimVersTransfFile";
             this.ucPrimVersTransfFile.Size = new System.Drawing.Size(776, 289);
             this.ucPrimVersTransfFile.TabIndex = 0;

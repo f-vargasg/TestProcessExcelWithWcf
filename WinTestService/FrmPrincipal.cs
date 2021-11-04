@@ -53,7 +53,7 @@ namespace WinTestService
 
             // segunda versión
             this.ucSegVersTransfFile.TxtPathFname.Text = ConfigurationManager.AppSettings["fname"];
-            this.ucSegVersTransfFile.TxtDownloadPath.Text  = ConfigurationManager.AppSettings["downloadPath"];
+            this.ucSegVersTransfFile.TxtDownloadPath.Text = ConfigurationManager.AppSettings["downloadPath"];
             this.ucSegVersTransfFile.ButBrowseFiles.Click += ButBrowseFiles_Click1;
             this.ucSegVersTransfFile.ButUpload.Click += ButUpload_Click1;
             this.ucSegVersTransfFile.ButStoreDb.Click += ButStoreDb_Click1;
@@ -61,7 +61,7 @@ namespace WinTestService
 
         }
 
-     
+
         private string GetFilePath(string pOldFilePath)
         {
             string res = string.Empty;
@@ -87,13 +87,13 @@ namespace WinTestService
         #endregion
 
         #region Eventos Componentes Primera Version
-        
+
         private void ButDownload_Click(object sender, EventArgs e)
         {
             try
             {
                 MyServiceTranferFilesClient client = new MyServiceTranferFilesClient();
-                var stream = client.Download(this.lastFileUploaded.NameStored);
+                var stream = client.Download(this.lastFileUploaded.PathFnameInServer);
                 var realFname = Path.Combine(ConfigurationManager.AppSettings["downloadPath"], this.lastFileUploaded.RealFname());
                 using (FileStream outputFs = new FileStream(realFname, FileMode.Create))
                 {
@@ -112,7 +112,7 @@ namespace WinTestService
             try
             {
                 MyServiceTranferFilesClient client = new MyServiceTranferFilesClient();
-                string realServerFfname = lastFileUploaded.NameStored;
+                string realServerFfname = lastFileUploaded.PathFnameInServer;
                 client.StoreToDb(realServerFfname);
                 string msgExito = string.Format("Archivo {0} cargado exitosamente !!!", realServerFfname);
                 MessageBox.Show(msgExito);
@@ -131,7 +131,7 @@ namespace WinTestService
                 string pathFname = ucPrimVersTransfFile.TxtPathFname.Text;
                 FileStream fsSource = new FileStream(pathFname, FileMode.Open,
                                                      FileAccess.Read);
-                this.lastFileUploaded.NameStored = client.Upload(fsSource);
+                this.lastFileUploaded.PathFnameInServer = client.Upload(fsSource);
                 this.lastFileUploaded.RealExtension = Path.GetExtension(pathFname);
 
                 MessageBox.Show("Archivo Subido correctamente ...");
@@ -179,7 +179,19 @@ namespace WinTestService
 
         private void ButStoreDb_Click1(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            try
+            {
+                TransferFileServiceClient clientSrv = new TransferFileServiceClient();
+                string  fname = Path.GetFileName(ucSegVersTransfFile.TxtPathFname.Text);
+                clientSrv.StoreToDb(fname);
+                MessageBox.Show(string.Format("Archivo {0} cargado!!!", fname));
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
         private void ButUpload_Click1(object sender, EventArgs e)
@@ -206,7 +218,7 @@ namespace WinTestService
             {
                 MessageBox.Show(ex.Message);
             }
-            
+
         }
 
         private void ButBrowseFiles_Click1(object sender, EventArgs e)
@@ -222,8 +234,7 @@ namespace WinTestService
         {
             this.Dispose();
         }
+
         #endregion
-
-
     }
 }

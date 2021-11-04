@@ -82,6 +82,16 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TestLoadExcel.BE\TestLoadExcel.BE.csproj">
+      <Project>{38e76a41-6210-4dae-a4df-e0933672a9a5}</Project>
+      <Name>TestLoadExcel.BE</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TestLoadExcel.BL\TestLoadExcel.BL.csproj">
+      <Project>{028052f8-bd6c-432d-b4e7-5fc49e96ab1e}</Project>
+      <Name>TestLoadExcel.BL</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

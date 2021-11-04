@@ -4,9 +4,11 @@ using System.Configuration;
 using System.IO;
 using System.Linq;
 using System.Runtime.Serialization;
+using System.Security.Principal;
 using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
+using TestLoadExcel.BL;
 
 namespace WcfTransferFiles
 {
@@ -39,6 +41,25 @@ namespace WcfTransferFiles
 
             }
             return result;
+        }
+
+        public bool StoreToDb(string filename)
+        {
+            ClienteTestBL clienteTestBL = new ClienteTestBL();
+            bool res = true;
+
+            try
+            {
+                string usuario = WindowsIdentity.GetCurrent().Name;
+                string pathFname = Path.Combine(ConfigurationManager.AppSettings["uploadPath"], filename);
+                clienteTestBL.LoadFromExcel(pathFname, usuario);
+            }
+            catch (Exception ex)
+            {
+                string msgErr = ex.Message;
+                res = false;
+            }
+            return res;
         }
 
         public void UploadFile(RemoteFileInfo request)
