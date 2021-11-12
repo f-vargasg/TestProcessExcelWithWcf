@@ -31,11 +31,11 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmPrincipal));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.tlsStrExit = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
+            this.tlsStrTest = new System.Windows.Forms.ToolStripButton();
             this.tblServices = new System.Windows.Forms.TabControl();
             this.tbPgPrimVersion = new System.Windows.Forms.TabPage();
-            this.ucPrimVersTransfFile = new WinTestService.UCTransferFiles();
             this.tbPgSegVersion = new System.Windows.Forms.TabPage();
+            this.ucPrimVersTransfFile = new WinTestService.UCTransferFiles();
             this.ucSegVersTransfFile = new WinTestService.UCTransferFiles();
             this.toolStrip1.SuspendLayout();
             this.tblServices.SuspendLayout();
@@ -48,7 +48,7 @@
             this.toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tlsStrExit,
-            this.toolStripButton2});
+            this.tlsStrTest});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(919, 27);
@@ -61,20 +61,20 @@
             this.tlsStrExit.Image = ((System.Drawing.Image)(resources.GetObject("tlsStrExit.Image")));
             this.tlsStrExit.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tlsStrExit.Name = "tlsStrExit";
-            this.tlsStrExit.Size = new System.Drawing.Size(29, 24);
+            this.tlsStrExit.Size = new System.Drawing.Size(24, 24);
             this.tlsStrExit.Text = "toolStripButton1";
             this.tlsStrExit.ToolTipText = "Salir";
             this.tlsStrExit.Click += new System.EventHandler(this.tlsStrExit_Click);
             // 
-            // toolStripButton2
+            // tlsStrTest
             // 
-            this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
-            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.Size = new System.Drawing.Size(29, 24);
-            this.toolStripButton2.Text = "toolStripButton2";
-            this.toolStripButton2.ToolTipText = "Test";
+            this.tlsStrTest.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tlsStrTest.Image = ((System.Drawing.Image)(resources.GetObject("tlsStrTest.Image")));
+            this.tlsStrTest.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tlsStrTest.Name = "tlsStrTest";
+            this.tlsStrTest.Size = new System.Drawing.Size(24, 24);
+            this.tlsStrTest.Text = "toolStripButton2";
+            this.tlsStrTest.ToolTipText = "Test";
             // 
             // tblServices
             // 
@@ -90,32 +90,32 @@
             // tbPgPrimVersion
             // 
             this.tbPgPrimVersion.Controls.Add(this.ucPrimVersTransfFile);
-            this.tbPgPrimVersion.Location = new System.Drawing.Point(4, 29);
+            this.tbPgPrimVersion.Location = new System.Drawing.Point(4, 25);
             this.tbPgPrimVersion.Name = "tbPgPrimVersion";
             this.tbPgPrimVersion.Padding = new System.Windows.Forms.Padding(3);
-            this.tbPgPrimVersion.Size = new System.Drawing.Size(911, 419);
+            this.tbPgPrimVersion.Size = new System.Drawing.Size(911, 423);
             this.tbPgPrimVersion.TabIndex = 0;
             this.tbPgPrimVersion.Text = "Primera Versión";
             this.tbPgPrimVersion.UseVisualStyleBackColor = true;
             // 
-            // ucPrimVersTransfFile
-            // 
-            this.ucPrimVersTransfFile.Location = new System.Drawing.Point(0, 0);
-            this.ucPrimVersTransfFile.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.ucPrimVersTransfFile.Name = "ucPrimVersTransfFile";
-            this.ucPrimVersTransfFile.Size = new System.Drawing.Size(856, 289);
-            this.ucPrimVersTransfFile.TabIndex = 0;
-            // 
             // tbPgSegVersion
             // 
             this.tbPgSegVersion.Controls.Add(this.ucSegVersTransfFile);
-            this.tbPgSegVersion.Location = new System.Drawing.Point(4, 29);
+            this.tbPgSegVersion.Location = new System.Drawing.Point(4, 25);
             this.tbPgSegVersion.Name = "tbPgSegVersion";
             this.tbPgSegVersion.Padding = new System.Windows.Forms.Padding(3);
-            this.tbPgSegVersion.Size = new System.Drawing.Size(911, 419);
+            this.tbPgSegVersion.Size = new System.Drawing.Size(911, 423);
             this.tbPgSegVersion.TabIndex = 1;
             this.tbPgSegVersion.Text = "Segunda Versión";
             this.tbPgSegVersion.UseVisualStyleBackColor = true;
+            // 
+            // ucPrimVersTransfFile
+            // 
+            this.ucPrimVersTransfFile.Location = new System.Drawing.Point(0, 0);
+            this.ucPrimVersTransfFile.Margin = new System.Windows.Forms.Padding(4);
+            this.ucPrimVersTransfFile.Name = "ucPrimVersTransfFile";
+            this.ucPrimVersTransfFile.Size = new System.Drawing.Size(856, 289);
+            this.ucPrimVersTransfFile.TabIndex = 0;
             // 
             // ucSegVersTransfFile
             // 
@@ -127,7 +127,7 @@
             // 
             // FrmPrincipal
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(919, 479);
             this.Controls.Add(this.tblServices);
@@ -150,7 +150,7 @@
         #endregion
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton tlsStrExit;
-        private System.Windows.Forms.ToolStripButton toolStripButton2;
+        private System.Windows.Forms.ToolStripButton tlsStrTest;
         private System.Windows.Forms.TabControl tblServices;
         private System.Windows.Forms.TabPage tbPgPrimVersion;
         private UCTransferFiles ucPrimVersTransfFile;
