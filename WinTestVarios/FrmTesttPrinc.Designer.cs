@@ -46,25 +46,26 @@ namespace WinTestVarios
             this.label1.Location = new System.Drawing.Point(13, 41);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(83, 16);
+            this.label1.Size = new System.Drawing.Size(149, 29);
             this.label1.TabIndex = 0;
             this.label1.Text = "File To load:";
             // 
             // txtFname
             // 
-            this.txtFname.Location = new System.Drawing.Point(128, 38);
+            this.txtFname.Location = new System.Drawing.Point(169, 38);
             this.txtFname.Name = "txtFname";
-            this.txtFname.Size = new System.Drawing.Size(570, 22);
+            this.txtFname.Size = new System.Drawing.Size(570, 33);
             this.txtFname.TabIndex = 1;
             // 
             // tlsStrpPrinc
             // 
+            this.tlsStrpPrinc.ImageScalingSize = new System.Drawing.Size(28, 28);
             this.tlsStrpPrinc.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tlsStrpExit,
             this.tlsStrpDoTest});
             this.tlsStrpPrinc.Location = new System.Drawing.Point(0, 0);
             this.tlsStrpPrinc.Name = "tlsStrpPrinc";
-            this.tlsStrpPrinc.Size = new System.Drawing.Size(787, 25);
+            this.tlsStrpPrinc.Size = new System.Drawing.Size(787, 38);
             this.tlsStrpPrinc.TabIndex = 2;
             this.tlsStrpPrinc.Text = "toolStrip1";
             // 
@@ -74,7 +75,7 @@ namespace WinTestVarios
             this.tlsStrpExit.Image = ((System.Drawing.Image)(resources.GetObject("tlsStrpExit.Image")));
             this.tlsStrpExit.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tlsStrpExit.Name = "tlsStrpExit";
-            this.tlsStrpExit.Size = new System.Drawing.Size(23, 22);
+            this.tlsStrpExit.Size = new System.Drawing.Size(40, 32);
             this.tlsStrpExit.Text = "toolStripButton1";
             this.tlsStrpExit.ToolTipText = "Exit";
             this.tlsStrpExit.Click += new System.EventHandler(this.tlsStrpExit_Click);
@@ -85,7 +86,7 @@ namespace WinTestVarios
             this.tlsStrpDoTest.Image = ((System.Drawing.Image)(resources.GetObject("tlsStrpDoTest.Image")));
             this.tlsStrpDoTest.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tlsStrpDoTest.Name = "tlsStrpDoTest";
-            this.tlsStrpDoTest.Size = new System.Drawing.Size(23, 22);
+            this.tlsStrpDoTest.Size = new System.Drawing.Size(40, 32);
             this.tlsStrpDoTest.Text = "toolStripButton2";
             this.tlsStrpDoTest.ToolTipText = "Do Test";
             this.tlsStrpDoTest.Click += new System.EventHandler(this.tlsStrpDoTest_Click);
@@ -98,12 +99,13 @@ namespace WinTestVarios
             this.dgrData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgrData.Location = new System.Drawing.Point(0, 105);
             this.dgrData.Name = "dgrData";
+            this.dgrData.RowHeadersWidth = 72;
             this.dgrData.Size = new System.Drawing.Size(787, 356);
             this.dgrData.TabIndex = 3;
             // 
             // FrmTesttPrinc
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(787, 461);
             this.Controls.Add(this.dgrData);
@@ -112,7 +114,7 @@ namespace WinTestVarios
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmTesttPrinc";
             this.Text = "Form1";
             this.tlsStrpPrinc.ResumeLayout(false);
